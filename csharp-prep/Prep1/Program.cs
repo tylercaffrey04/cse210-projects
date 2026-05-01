@@ -23,7 +23,6 @@ class Program
         else if (x == 20)
         {
             Console.WriteLine("20");
-
         }
         else
         {
