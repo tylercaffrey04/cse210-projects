@@ -7,7 +7,7 @@ class Program
     {
         Console.WriteLine("Why hello there traveler.");
     }
-    static int Addnumber(int n1, int n2, int n3)
+    static int AddNumber(int n1, int n2, int n3)
     {
         int total = n1 + n2 + n3;
         return total;
@@ -16,7 +16,7 @@ class Program
     static void Main(string[] args)
     {
         DisplayGreeting();
-        int total = Addnumber(10,15,45);
+        int total = AddNumber(10,15,45);
         Console.WriteLine(total);
         // Super coooool program we got running here dont you worry
         // Console.WriteLine("Hello Sandbox World!");
