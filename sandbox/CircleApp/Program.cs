@@ -8,5 +8,12 @@ class Program
         myCircle.SetRadius(10);
         double area = myCircle.GetArea();
         Console.WriteLine(area);
+
+        Cylinder myCylinder = new Cylinder();
+        myCylinder._circle = new Circle();
+        myCylinder._circle._radius = 10;
+        double volume = myCylinder.GetCylinderVolume();
+        Console.WriteLine(volume);
     }
+
 }

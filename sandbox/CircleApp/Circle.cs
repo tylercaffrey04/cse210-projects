@@ -1,6 +1,6 @@
 class Circle
 {
-    double _radius;
+    public double _radius;
 
     public void SetRadius(double radius)
     {
