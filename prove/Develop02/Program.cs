@@ -4,10 +4,20 @@ class Program
 {
     static void Main(string[] args)
     {
+        Menu menu = new Menu();
         Journal journal = new Journal();
-        journal.CreateEntries();
-        journal.CreateEntries();
-        journal.DisplayEntries();
+        do
+        {
+            int response = menu.ProcessMenu();
+            if(response == 5)
+            {
+                break;
+            }
+            menu.DetermineAction(response, journal);
+            
+        }while(true);
+
+
 
     }
 }
