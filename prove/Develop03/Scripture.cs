@@ -58,6 +58,10 @@ class Scripture
             {
                 _words[index].Hide();
             }
+            else
+            {
+                i--;
+            }
             
         }
     }
