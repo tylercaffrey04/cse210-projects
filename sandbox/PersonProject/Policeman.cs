@@ -1,8 +1,7 @@
-class Policeman : Person
-{
-    private string _weapons;
+namespace PersonProject;
 
-    public Policeman(string weapons, string firstName, string lastName, int age, int weight) : base(firstName, lastName, age, weight){
-        _weapons = weapons;
-    }
+internal class Policeman(string weapons, string firstName, string lastName, int age, int weight)
+    : Person(firstName, lastName, age, weight)
+{
+    private string _weapons = weapons;
 }
