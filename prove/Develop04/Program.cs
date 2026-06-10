@@ -1,9 +1,15 @@
 using System;
+using Develop04;
 
-class Program
+internal static class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop04 World!");
+        Activity myActivity = new Activity("Breathing Activity", "A super cool breathing activity");
+        myActivity.StartActivity("Breath In: ");
+    
     }
 }
+
+
+
