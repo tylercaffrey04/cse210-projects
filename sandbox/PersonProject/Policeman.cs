@@ -4,4 +4,10 @@ internal class Policeman(string weapons, string firstName, string lastName, int 
     : Person(firstName, lastName, age, weight)
 {
     private string _weapons = weapons;
+    
+    public string GetPoliceInformation()
+    {
+        return $"Weapons:{weapons} {GetPersonInformation()}";
+
+    }
 }
