@@ -2,11 +2,11 @@ using System.Data;
 using System.Security.Cryptography;
 namespace PersonProject;
 
-internal class Person(string firstName, string lastName, int age, int weight)
+internal abstract class Person(string firstName, string lastName, int age, int weight)
 {
     private int _weight = weight;
     private int _age = age;
-    public string GetPersonInformation()
+    public virtual string GetPersonInformation()
     {
         return $"Name:{firstName} {lastName}, Age:{_age}, Weight: {_weight}";
     }
@@ -25,5 +25,7 @@ internal class Person(string firstName, string lastName, int age, int weight)
             Console.WriteLine("Age must be between 0 and 115");
         }
     }
+    public abstract double GetSalary();
+    
     
 }

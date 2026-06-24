@@ -3,11 +3,15 @@ namespace PersonProject;
 internal class Policeman(string weapons, string firstName, string lastName, int age, int weight)
     : Person(firstName, lastName, age, weight)
 {
-    private string _weapons = weapons;
     
-    public string GetPoliceInformation()
+    public override string GetPersonInformation()
     {
-        return $"Weapons:{weapons} {GetPersonInformation()}";
+        return $"Weapons:{weapons} {base.GetPersonInformation()}";
 
+    }
+
+    public override double GetSalary()
+    {
+        return 100000.00;
     }
 }

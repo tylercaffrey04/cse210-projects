@@ -1,15 +1,11 @@
-using System;
-using Develop04;
+namespace Develop04;
 
 internal static class Program
 {
     static void Main(string[] args)
     {
-        Activity myActivity = new Activity("Breathing Activity", "A super cool breathing activity");
-        myActivity.StartActivity("Breath In: ");
-    
+        BreathingActivity breathe = new BreathingActivity("A breathing Activity to help you calm down.");
+        
+        breathe.Run();
     }
 }
-
-
-
