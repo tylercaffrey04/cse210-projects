@@ -1,16 +1,17 @@
 ﻿namespace Develop05;
 
-public class Goal(string name, string description, int points)
+public class Goal(string name, string description, int points, bool completed)
 {
-    private bool _completed = false;
+    protected bool Completed = completed;
+
     public virtual void RecordEvent()
     {
-        _completed = true;
+        Completed = true;
     }
 
     public virtual int PointsFromGoal()
     {
-        if(_completed)
+        if(Completed)
             return points;
         else
             return 0;
@@ -19,15 +20,23 @@ public class Goal(string name, string description, int points)
 
     public virtual string GetFileString()
     {
-        return $"{name}.{description}.{points},";
+        return $"{name}.{description}.{points}.{Completed}";
     }
 
+    public virtual void ReadFileString()
+    {
+        
+    }
     public virtual string DisplayGoal()
     {
-        return $"Goal name: {name}:\nDescription: {description}\nPoints:{PointsFromGoal()}\n";
+        if(Completed)
+            return $"[x] Goal name: {name}| Description: {description}| Points:{points}\n";
+        else
+            return $"[ ] Goal name: {name}| Description: {description}| Points:{points}\n";
+            
     }
     public bool IsCompleted()
     {
-        return _completed;
+        return Completed;
     }
 }

@@ -10,7 +10,7 @@ public class Menu
         while (true)
         {
 
-
+            Console.Clear();
             Console.WriteLine($"Number of points: {_myGoals.CalculatePoints()}");
             Console.WriteLine("""
                               Menu Options:
@@ -21,58 +21,93 @@ public class Menu
                               5.) Record Event
                               6.) Quit
                               """);
-            int ans = Convert.ToInt32(Console.ReadLine());
-
-            if (ans == 1)
+            string ans = Console.ReadLine();
+            if (ans == "1")
             {
                 GoalCreationMenu();
             }
-            else if (ans == 2)
+            else if (ans == "2")
             {
                 _myGoals.DisplayGoals();
                 Console.WriteLine("Press any key to Return to Main Menu...");
                 Console.ReadLine();
             }
-            else if (ans == 3)
+            else if (ans == "3")
             {
                 _myGoals.SaveGoals();
             }
-            else if (ans == 4)
+            else if (ans == "4")
             {
                 _myGoals.LoadGoals();
             }
-            else if (ans == 5)
+            else if (ans == "5")
             {
-
+                CompleteGoalMenu();
             }
-            else if (ans == 6)
+            else if (ans == "6")
             {
                 break;
             }
+            else
+                return;
         }
     }
 
     public void GoalCreationMenu()
     {
-        int goalType = 0;
-        string goalName = "";
-        string goalDescription = "";
-        int points = 0;
+        while (true)
+        {
+
+            Console.Clear();
+            Console.WriteLine("""
+                              Goal Options:
+                              1.) Simple Goal
+                              2.) Eternal Goal
+                              3.) Checklist Goal
+                              """);
+            string ans = Console.ReadLine();
+            if (ans.Contains("1") || ans.Contains("2") || ans.Contains("3"))
+            {
+                var goalType = Convert.ToInt32(ans);
+                Console.Clear();
+                Console.WriteLine("Name of Goal: ");
+                var goalName = Console.ReadLine();
+                Console.WriteLine("Description of Goal: ");
+                var goalDescription = Console.ReadLine();
+                Console.WriteLine("Point value of Goal: ");
+                var points = Convert.ToInt32(Console.ReadLine());
+                if (goalType == 3)
+                {
+                    Console.WriteLine("times to be Completed:");
+                    int timesToComplete = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Bonus Points for Completion: ");
+                    int bonusPoints = Convert.ToInt32(Console.ReadLine());
+                    _myGoals.CreateGoal(goalType, goalName, goalDescription, points, false ,0,timesToComplete, bonusPoints);
+                    
+                }
+                else
+                    _myGoals.CreateGoal(goalType, goalName, goalDescription, points);
+                break;
+            }
+            else
+            {
+                return;
+            }
+        }
+        
+    }
+
+    private void CompleteGoalMenu()
+    {
         Console.Clear();
-        Console.WriteLine("""
-                          Goal Options:
-                          1.) Simple Goal
-                          2.) Eternal Goal
-                          3.) Checklist Goal
-                          """);
-        goalType = Convert.ToInt32(Console.ReadLine());
-        Console.Clear();
-        Console.WriteLine("Name of Goal: ");
-        goalName = Console.ReadLine();
-        Console.WriteLine("Description of Goal: ");
-        goalDescription = Console.ReadLine();
-        Console.WriteLine("Point value of Goal: ");
-        points = Convert.ToInt32(Console.ReadLine());
-        _myGoals.CreateGoal(goalType, goalName, goalDescription, points);
+        float oldPoints = _myGoals.CalculatePoints();
+        Console.WriteLine("Goal to Record: ");
+        _myGoals.DisplayGoals();
+        int ans = Convert.ToInt32(Console.ReadLine());
+        _myGoals.CompleteGoal(ans-1);
+        float newPoints = _myGoals.CalculatePoints();
+        Console.WriteLine($"Points recieved: {newPoints - oldPoints}");
+        Console.WriteLine("Press any key to Return to Main Menu...");
+        Console.ReadLine();
     }
 }
